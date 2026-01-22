@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #151b1f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    color: #55aaa9;
+    padding: 30px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.main-section {
+    background-color: #111619;
+    border: 1px solid #3a6983;
+    border-radius: 15px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 50px;
+    min-height: 50vh;
+    flex-wrap: wrap;
+}
+
+.clock-section {
+    width: 40%;
+    min-width: 300px;
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.clock-display {
+    display: flex;
+    flex-direction: row;
+    color: #28E0DE;
+    font-size: 50px;
+    gap: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.current-date {
+    color: #2c9d9b;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clock-hours, .clock-minutes, .clock-seconds {
+    border: 1px solid #28e0dd50;
+    font-weight: bold;
+    padding: 5px 20px;
+    background-color: #20282c;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.stopwatch-section {
+    width: 40%;
+    min-width: 300px;
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;  
+    flex: 1;
+}
+
+.stopwatch-display {
+    display: flex;
+    flex-direction: row;
+    color: #28E0DE;
+    font-size: 50px;
+    gap: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stopwatch-hours, .stopwatch-minutes, .stopwatch-seconds {
+    border: 1px solid #28e0dd50;
+    font-weight: bold;
+    padding: 5px 20px;
+    background-color: #20282c;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.stopwatch-mseconds {
+    font-size: 48px;
+    color: #2c9d9b;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    font-weight: bold;
+}
+
+.buttons-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    align-items: center;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 10px 70px;
+}
+
+.buttons-section button {
+    background-color: #2c9d9b;
+    border: none;
+    min-width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    padding: 0 15px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.buttons-section button:active {
+    transform: scale(0.98);
+}
+
+.buttons-section button:hover {
+    background-color: #3cd4d1;
+}
+
+.buttons-section button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.buttons-section button:disabled:hover {
+    background-color: #2c9d9b;
+}
+
+.title-clock-section, .title-stopwatch-section {
+    color: rgb(172, 201, 213);
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.laps-section {
+    width: 80%;
+    max-height: 12vh;
+    min-height: 60px;
+    overflow-y: auto;
+    /* scrollbar-width: 7px;
+    scrollbar-color: #28e0dd50 #111619; */
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    color: #55aaa9;
+    background-color: #20282c;
+    padding-left: 20px;
+}
+
+/* 스크롤바 스타일링 */
+.laps-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.laps-section::-webkit-scrollbar-track {
+    background: #111619;
+    border-radius: 4px;
+}
+
+.laps-section::-webkit-scrollbar-thumb {
+    background: #28e0dd50;
+    border-radius: 4px;
+}
+
+.laps-section::-webkit-scrollbar-thumb:hover {
+    background: #28E0DE;
+}
+
+.lap-item {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 95%;
+}
+
+.lap-item:hover {
+    background-color: #3d4e58;
+    cursor: pointer;
+    color: #28E0DE;
+}
+
+/* ===== 모바일 최적화 (768px 이하) ===== */
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+        gap: 30px;
+        padding: 15px;
+    }
+    
+    .clock-section,
+    .stopwatch-section {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .clock-display,
+    .stopwatch-display {
+        font-size: 40px;
+        gap: 10px;
+    }
+    
+    .clock-hours, .clock-minutes, .clock-seconds,
+    .stopwatch-hours, .stopwatch-minutes, .stopwatch-seconds {
+        min-width: 70px;
+        padding: 8px 15px;
+        font-size: 40px;
+    }
+    
+    .buttons-section {
+        width: 100%;
+        padding: 10px 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .buttons-section button {
+        width: 100%;
+        height: 44px;
+        font-size: 16px;
+    }
+    
+    .laps-section {
+        width: 100%;
+        max-height: 20vh;
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    header {
+        font-size: 22px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    body {
+        padding: 10px;
+    }
+}
