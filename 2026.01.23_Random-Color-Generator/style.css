@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #226DC8;
+}
+
+.main-container {
+    min-width: 30%;
+    background-color: #FDFDFB;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.title-generator {
+    min-width: 30%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    font-size: 18px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.section-generator {
+    min-width: 30%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#colorBox {
+    border: 1px solid gray;
+    background-color: white;
+    min-width: 80%;
+    display: flex;
+    min-height: 35vh;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#hexCode {
+    font-size: 25px;
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+#hexCode:hover {
+    background-color: #d8dfe7;
+}
+
+#generateBtn {
+    margin-top: 20px;
+    border: none;
+    min-width: 300px;
+    min-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #2B5A90;
+    color: #FDFDFB;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#generateBtn:hover {
+    background-color: #4d84c3;
+}
+
+#generateBtn:active {
+    transform: translateY(1px); /* 눌리는 효과 */
+}
+
+#copyMessage {
+    font-size: 20px;
+    color: #2ecc71;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    height: 30px;
+}
+
+#copyMessage.show {
+    opacity: 1;
+}
+
+.short-comment {
+    margin-top: 10px;
+    min-width: 30%;
+    display: flex;
+    background-color: #D13536;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    font-size: 20px;
+    color: #FDFDFB;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+@media (max-width:768px) {
+    .main-container, .title-generator {
+        min-width: 90%;
+    }
+    #generateBtn {
+        min-width: 200px;
+    }
+    
+    #hexCode {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+}
