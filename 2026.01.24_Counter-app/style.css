@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #42424E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.title-section {
+    min-width: 50%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: #FDFDFD;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.main-container {
+    min-width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #33333B;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
+}
+
+.count-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 65%;
+}
+
+.number-count {
+    font-size: 130px;
+    font-weight: bold;
+    color: #63C091;
+    font-family: 'Franklin Gothic Heavy';
+    transition: transform 0.2s ease;
+}
+
+.buttons-section {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons-section button {
+    height: 100%;
+    flex: 1;
+    border-top: 1px solid #43434B;
+    border-bottom: 1px solid #33333B;
+    border-left: none;
+    background-color: inherit;
+    color: #6B6B73;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.1s ease;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.buttons-section button:hover {
+    background-color: #2f2f36;
+    color: #9a9aa7;
+}
+
+.increase-btn {
+    border-right: 1px solid #43434B;
+}
+
+.reset-btn {
+    border-right: 1px solid #43434B;
+}
+
+.decrease-btn {
+    border-right: 1px solid #33333B;
+}
+
+.information-section {
+    height: 100px;
+    color: #456253;
+    min-width: 60%;
+    margin-top: 30px;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .title-section {
+        width: 90%;
+        align-items: center;
+    }
+    .main-container {
+        width: 90%;
+        min-height: 80%;
+    }
+    .information-section {
+        display: none;
+    }
+    .count-section {
+        height: 50%;
+    }
+    .buttons-section {
+        height: 50%;
+        flex-direction: column;
+    }
+    .buttons-section button {
+        width: 100%;
+        border-right: none;
+    }
+}
