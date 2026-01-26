@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); */
+    /* background-color: #121212; */
+    background-color: #0f1c2d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calculator-title {
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    gap: 10px;
+    color: #FFD700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 200;
+    margin-bottom: 25px;
+}
+
+.calculator {
+    margin-top: 30px;
+    padding: 20px;
+    width: 450px;
+    background-color: #212020;
+    border-radius: 5px;
+}
+
+.calculator-title strong {
+    color: aqua;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    min-height: 100px;
+    color: white;
+    border: 1px solid #A6A5A1;
+    border-radius: 10px;
+    background-color: #2a2a2a;
+    margin-bottom: 30px;
+}
+
+.prev-operand {
+    min-height: 25px;
+    opacity: 0.4;
+    font-size: 15px;
+    display: flex;
+    justify-content: end;
+}
+
+.curr-operand {
+    font-size: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    min-height: 60px;
+    font-weight: 300;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+.button-area {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.btn-operator, .btn-number {
+    padding: 15px 0;
+    font-size: 20px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.btn-operator:hover {
+    background-color: #403A36;
+}
+
+.btn-number-zero {
+    grid-column: span 2;
+    border-radius: 7px;
+    border: none;
+    background-color: #403A36;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.btn-number-zero:hover {
+    background-color: #37312D;
+}
+
+.btn-number {
+    background-color: #403A36;
+}
+
+.btn-number:hover {
+    background-color: #37312D;
+}
+
+.btn-operator-equal {
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 7px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #A6A5A1; 
+}
+
+.btn-operator-equal:hover {
+    background-color: #999793;
+}
+
+.btn-operator {
+    background-color: #37312D;
+}
+
+
+
+/* 모바일 대응 추가 */
+@media (max-width: 500px) {
+    .calculator {
+        width: 95%;
+        max-width: 450px;
+        padding: 15px;
+    }
+    
+    .calculator-title {
+        font-size: 24px;
+        min-height: 50px;
+    }
+    
+    .calculator-title strong {
+        font-size: 28px;
+    }
+    
+    .btn-operator, .btn-number, .btn-number-zero, .btn-operator-equal {
+        height: 50px;
+        font-size: 18px;
+    }
+    
+    .btn-operator-equal {
+        font-size: 20px;
+    }
+    
+    .curr-operand {
+        font-size: 36px;
+    }
+}

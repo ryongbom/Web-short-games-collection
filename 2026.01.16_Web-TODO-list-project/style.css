@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select:none;
+}
+
+body {
+    background-color: #353E5B;
+    color: #E2ECEE;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+.main-todo-list {
+    background-color: #485377;
+    padding:20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+    min-width: 300px;
+    box-shadow:2px 2px 30px rgb(30, 88, 135);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+
+.title-todo-list {
+    font-size: 25px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.date-todo-list {
+    height: 30px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+section {
+    width: 100%;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.input-border {
+    flex: 1;
+    height: 40px;
+    border: 3px solid #30466F;
+    padding-left: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #242C3F;
+    color: #E2ECEE;
+    min-width: 0;
+}
+
+.input-border:focus {
+    outline: 2px solid #05E392; /* ← 추가: input 포커스 스타일 */
+}
+
+.btn-input {
+    background-color: #30466F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 90px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+.btn-input:hover{
+    cursor: pointer;
+    background:#3c588a;
+}
+
+.btn-input:focus {
+    outline: 2px solid #05E392;
+    outline-offset: 2px;
+}
+
+.nav-todo-list {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0px;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-todo-list {
+    border: 1px solid #05E392;
+    flex: 1;
+    max-width: 120px;
+    min-width: 100px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;    
+    font-weight: 450;
+    font-family: inherit;
+    color: inherit;
+    background-color: inherit;
+}
+
+.btn-todo-list:hover {
+    cursor: pointer;
+    background-color: #05E392;
+    color: #242C3F;
+}
+
+.container-todo-list {
+    height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 5px;
+}
+
+/* 스크롤바 스타일링 */
+.container-todo-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container-todo-list::-webkit-scrollbar-thumb {
+    background-color: #30466F;
+    border-radius: 4px;
+}
+
+.container-todo-list::-webkit-scrollbar-track {
+    background-color: #242C3F;
+    border-radius: 4px;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.btn-clear-all {
+    border-radius: 5px;
+    background-color: #FF4757;
+    width: 100px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    align-items: center;
+    border: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+.btn-clear-all:hover {
+    cursor: pointer;
+    background-color: #bf2e3a;
+}
+
+.btn-clear-all:focus {
+    outline: 1px solid #E2ECEE;
+    outline-offset: 1px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+    .main-todo-list {
+        width: 100%; /* ← 모바일에서는 100% */
+        min-width: unset; /* ← 최소 너비 제거 */
+        padding: 15px;
+    }
+    
+    .input-section {
+        flex-direction: column; /* ← 세로 배치 */
+    }
+    
+    .input-border {
+        width: 100%;
+    }
+    
+    .btn-input {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .nav-todo-list {
+        flex-direction: column; /* ← 세로 배치 */
+        gap: 8px;
+    }
+    
+    .btn-todo-list {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .title-todo-list {
+        font-size: 22px; /* ← 폰트 크기 줄임 */
+    }
+    
+    .container-todo-list {
+        height: 250px; /* ← 높이 조정 */
+    }
+}
+
+/* 태블릿 대응 */
+@media (min-width: 601px) and (max-width: 768px) {
+    .main-todo-list {
+        width: 95%;
+    }
+    
+    .nav-todo-list {
+        gap: 5px;
+    }
+    
+    .btn-todo-list {
+        min-width: 90px;
+        max-width: 110px;
+    }
+}
+

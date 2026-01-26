@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-list</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-todo-list">
+        <header>
+            <div class="title-todo-list">
+                <h1 class="text-title"><i class="fas fa-tasks"></i> Todo List</h1>
+            </div>
+            <div class="date-todo-list" id="date-display">
+
+            </div>
+        </header>
+
+        <section>
+            <form class="input-section">
+                <input type="text" name="input" class="input-border" placeholder="Enter a new task to do today..." required>
+                <button type="submit" class="btn-input">add</button>
+            </form>
+            <div class="nav-todo-list">
+                <button type="button" class="btn-todo-list" data-action="all-todo-list">All</button>
+                <button type="button" class="btn-todo-list" data-action="must-do-list">Uncompleted</button>
+                <button type="button" class="btn-todo-list" data-action="completed-list">Completed</button>
+            </div>
+            <div class="container-todo-list" id="todo-container">
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="description-footer">
+                <p class="text-description">
+                    Uncompleted: <span id="Uncompleted-count">0</span>
+                </p>
+            </div>
+            <button type="button" class="btn-clear-all">ClearAll</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
