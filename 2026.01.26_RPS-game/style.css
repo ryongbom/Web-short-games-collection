@@ -1,0 +1,334 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #272526;
+}
+
+.main-section {
+    min-width: 50%;
+    margin-right: 50px;
+    min-height: 80%;
+    background-color: #424141;
+    border-radius: 10px;
+    /* opacity: 0.7; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.4); */
+}
+
+.title-section {
+    /* border: 1px solid wheat; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    color: rgb(220, 208, 196);
+    font-size: 20px;
+    margin-bottom: 20px;
+    background-color: #4e493f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.main-container {
+    width: 100%;
+    /* border: 1px solid white; */
+    min-height: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.player-section {
+    min-width: 25%;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-player {
+    font-size: 25px;
+    color: #EB3324;
+}
+
+.player-board {
+    width: 100%;
+    height: 190px;
+    border: 1px solid rgb(226, 202, 174);
+    border-radius: 5px;
+    /* background-image: url(boards/Paper-board.jpg); */
+}
+
+.vs-section {
+    min-width: 20%;
+    font-size: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    color: rgb(226, 202, 174);
+}
+
+.computer-section {
+    min-width: 25%;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.name-computer {
+    font-size: 25px;
+    color: #3282F6;
+}
+
+.computer-board {
+    width: 100%;
+    height: 190px;
+    border: 1px solid rgb(226, 202, 174);
+    border-radius: 5px;
+}
+
+.buttons-section {
+    height: 100px;
+    /* border: 1px solid wheat; */
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 20px;
+    margin-top: 30px;
+    background-color: #424952;
+}
+
+.buttons-section button {
+    border: none;
+    width: 100px;
+    border: 1px solid rgb(226, 202, 174);
+    min-height: 90px;
+    background-color: inherit;
+    border-radius: 10px;
+    box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+#RockBtn {
+    background-image: url(icons/Rock.jpg);
+}
+
+.Rock-button:active, .Paper-button:active, .Scissors-button:active {
+    transform: translateY(2px);
+}
+
+#PaperBtn {
+    background-image: url(icons/Paper.jpg);
+}
+
+#ScissorsBtn {
+    background-image: url(icons/scissors.jpg);
+}
+
+.explain-section {
+    flex: 1;
+    /* border: 1px solid beige; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: lightgray;
+    gap: 5px;
+}
+
+.explain-section .text-explain {
+    font-size: 28px;
+    color: rgb(226, 202, 174);
+}
+
+.result-section {
+    min-width: 40%;
+    min-height: 80%;
+    background-color: #3c4347;
+    border-radius: 10px;
+    /* opacity: 0.6; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.result-board {
+    width: 100%;
+    min-height: 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #d96396df;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    padding: 0 20px;
+}
+
+.score-player, .round-section, .score-computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 10px;
+}
+
+.name-score-player, .name-round, .name-score-computer {
+    font-size: 20px;
+}
+
+.number-score-player, .count-round, .number-score-computer {
+    font-size: 45px;
+}
+
+.history-section {
+    width: 100%;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    background-color: #31363c;
+    margin-top: 30px;
+    color: white;
+    font-size: 20px;
+    overflow-y: auto;
+    scrollbar-width: 4px;
+    scrollbar-color: #749b6c #2a2e34;
+    /* justify-content: center; */
+}
+
+.playButton-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+}
+
+#gamePlayBtn {
+    min-width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #A1FB8E;
+    color: black;
+}
+
+#gamePlayBtn:hover {
+    background-color: #7ea076;
+    color: rgb(255, 255, 255);
+    transform: translateY(-2px);
+    box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.4);
+}
+
+#gamePlayBtn:active {
+    transform: translateY(1px);
+}
+
+#gameResetBtn {
+    min-width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #9FFCFD;
+}
+
+#gameResetBtn:hover {
+    background-color: #619193;
+    color: rgb(255, 255, 255);
+    transform: translateY(-2px);
+    box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.4);
+}
+
+#gameResetBtn:active {
+    transform: translateY(1px);
+}
+
+/* 자바스크립트와 관련하여 리력구역 추가 스타일 */
+.element-history {
+    padding: 10px;
+    margin: 2px 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border-left: 4px solid #A1FB8E;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+/* 승/패/무승부 색상 구분 */
+.element-history.win {
+    border-left-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.element-history.lose {
+    border-left-color: #FF5252;
+    background-color: rgba(255, 82, 82, 0.1);
+}
+
+.element-history.draw {
+    border-left-color: #FFC107;
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+@media (max-width: 1200px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .main-section, .result-section {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .player-board, .computer-board {
+        width: 200px;
+    }
+    
+    .buttons-section {
+        flex-wrap: wrap;
+    }
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS-game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-section">
+        <header class="title-section">
+            <h1 class="title-game">Rock Paper Scissors</h1>
+            <p class="information-game">Challenge the computer to a classic hand game!</p>
+        </header>
+        <section class="main-container">
+            <div class="player-section">
+                <div class="name-player">Player</div>
+                <div class="player-board">
+
+                </div>
+            </div>
+            <div class="vs-section">
+                <p class="mark-vs">-- vs --</p>
+            </div>
+            <div class="computer-section">
+                <div class="name-computer">Computer</div>
+                <div class="computer-board">
+
+                </div>
+            </div>
+        </section>
+        <section class="buttons-section">
+            <button type="button" class="Rock-button" id="RockBtn"></button>
+            <button type="button" class="Paper-button" id="PaperBtn"></button>
+            <button type="button" class="Scissors-button" id="ScissorsBtn"></button>
+        </section>
+        <footer class="explain-section">
+            <p class="text-explain">Select Rock, Paper, or Scissors!</p>
+            <p class="text-method">Choose your weapon and click "Play Game!"</p>
+        </footer>
+    </div>
+    <div class="result-section">
+        <div class="result-board">
+            <div class="score-player">
+                <div class="name-score-player">Player score</div>
+                <div class="number-score-player">0</div>
+            </div>
+            <div class="round-section">
+                <div class="name-round">Round</div>
+                <div class="count-round">0</div>
+            </div>
+            <div class="score-computer">
+                <div class="name-score-computer">Computer score</div>
+                <div class="number-score-computer">0</div>
+            </div>
+        </div>
+        <section class="history-section">
+        </section>
+        <div class="playButton-section">
+            <button type="button" class="play-button" id="gamePlayBtn">Play Game</button>
+            <button type="button" class="reset-button" id="gameResetBtn">Reset</button> 
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
