@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake-Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-blur"></div>
+    <div class="start-container">
+        <div class="start-content">
+            <div class="title-start-content">🐍Snake Game</div>
+            <button class="button" class="start-btn" id="startBtn">오락시작</button>
+            <div class="text-start-content"><span>Enter</span> 건를 눌러 오락을 시작하십시오.</div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="status-section">
+            <div class="score-section">
+                <div class="text-score">Score:</div>
+                <div class="number-score" id="score">0</div>
+            </div>
+            <div class="high-score-section">
+                <div class="text-high-score">High Score:</div>
+                <div class="number-high-score" id="highScore">0</div>
+            </div>
+        </div>
+        <div class="main-game-section">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
