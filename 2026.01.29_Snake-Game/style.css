@@ -73,7 +73,7 @@
     border: none;
     border-radius: 30px;
     font-size: 30px;
-    font-family: '천리마';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     background-color: rgba(165, 160, 160, 0.2);
     color: rgb(182, 178, 178);
@@ -94,6 +94,7 @@
 .text-start-content {
     color: white;
     font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .text-start-content span {

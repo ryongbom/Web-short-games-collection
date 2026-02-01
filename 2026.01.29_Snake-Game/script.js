@@ -11,6 +11,7 @@ let snake = [
 ]
 let mouseDirection = { x: 1, y: 0 };
 let gameLoopId = null;
+let mouseCoord = { x: 0, y: 0 };
 
 startBtn.addEventListener('click', startGame);
 
@@ -44,8 +45,12 @@ canvas.addEventListener('mousemove', (event) => {
         mouseDirection.y *= speedFactor;
     }
 
-    console.log(`마우스 위치: (${mouseX}, ${mouseY})`);
-    console.log(`방향: (${mouseDirection.x.toFixed(2)}, ${mouseDirection.y.toFixed(2)})`);
+    console.log(`Mouse position: (${mouseX}, ${mouseY})`);
+    console.log(`Direction: (${mouseDirection.x.toFixed(2)}, ${mouseDirection.y.toFixed(2)})`);
+
+    // Store mouse position for arrow visualization
+    mouseCoord.x = mouseX;
+    mouseCoord.y = mouseY;
 })
 
 function startGame() {
@@ -65,6 +70,7 @@ function startGame() {
 
         createCanvas();
         initSnake();
+        initGame();
         startGameLoop();
     }, 300);
 }
@@ -75,6 +81,16 @@ function createCanvas() {
 
     ctx.fillStyle = '#0F1C28';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function initGame() {
+    score = 0;
+    foods = [];
+    updateScoreDisplay();
+
+    for (let i = 0; i < 3; i++) {
+        spawnFood();
+    }
 }
 
 function initSnake() {
@@ -94,6 +110,8 @@ function startGameLoop() {
 
     gameLoopId = setInterval(() => {
         moveSnake();
+        checkFoodCollision();
+        spawnFood();
         updateScreen();
     }, 50);
 }
@@ -102,25 +120,25 @@ function drawSnakeWithLines() {
     const CELL_SIZE = 10;
     const RADIUS = 5;
 
-    // 1. 연결선 그리기 (먼저)
+    // 1. Draw connecting lines (first)
     if (snake.length > 1) {
         ctx.strokeStyle = 'rgb(146, 211, 146)';
-        ctx.lineWidth = RADIUS * 2;  // 원 지름과 맞춤
-        ctx.lineCap = 'round';       // 끝을 둥글게
-        ctx.lineJoin = 'round';      // 연결점 둥글게
+        ctx.lineWidth = RADIUS * 2;  // Match circle diameter
+        ctx.lineCap = 'round';       // Round line ends
+        ctx.lineJoin = 'round';      // Round line joints
 
         ctx.beginPath();
-        // 첫 점으로 이동
+        // Move to first point
         ctx.moveTo(snake[0].x + CELL_SIZE / 2, snake[0].y + CELL_SIZE / 2);
 
-        // 각 점들을 선으로 연결
+        // Connect each point with lines
         for (let i = 1; i < snake.length; i++) {
             ctx.lineTo(snake[i].x + CELL_SIZE / 2, snake[i].y + CELL_SIZE / 2);
         }
         ctx.stroke();
     }
 
-    // 2. 원 그리기 (나중에 - 선 위에)
+    // 2. Draw circles (later - on top of lines)
     snake.forEach((coord, index) => {
         ctx.fillStyle = index === 0 ? '#f24141ff' : 'rgb(146, 211, 146)';
         ctx.beginPath();
@@ -132,6 +150,16 @@ function drawSnakeWithLines() {
         );
         ctx.fill();
     });
+
+    // Draw direction arrow
+    ctx.strokeStyle = '#a32089ff';
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(snake[0].x + CELL_SIZE / 2 + (20 * mouseDirection.x),
+        snake[0].y + CELL_SIZE / 2 + (20 * mouseDirection.y));
+    ctx.lineTo(mouseCoord.x, mouseCoord.y);
+    ctx.stroke();
 }
 
 function moveSnake() {
@@ -144,22 +172,24 @@ function moveSnake() {
         y: head.y + mouseDirection.y * SPEED
     };
 
-    // ✅ 이동 거리 계산
+    // Calculate movement distance
     const moveDistance = Math.sqrt(
         Math.pow(newHead.x - head.x, 2) +
         Math.pow(newHead.y - head.y, 2)
     );
 
     if (moveDistance < 1) {
-        // 거의 움직이지 않았으면 충돌 검사 생략
+        // Skip collision check if barely moving
         return;
     }
 
     if (gameOver(newHead.x, newHead.y)) {
         clearInterval(gameLoopId);
         gameLoopId = null;
-        if (confirm('오락이 종료되였습니다. 다시 시작하시겠습니까?')) {
+
+        if (confirm('Game Over. Restart?')) {
             createCanvas();
+            initGame();
             initSnake();
             startGameLoop();
         }
@@ -175,6 +205,7 @@ function updateScreen() {
     ctx.fillRect(0, 0, 1200, 600);
 
     drawSnakeWithLines();
+    drawFoods();
 }
 
 function gameOver(x, y) {
@@ -182,15 +213,15 @@ function gameOver(x, y) {
         return true;
     }
 
-    for (let i = 3; i < snake.length; i++) {
-        // 자기 몸 충돌검사 (이 부분 중요!)
+    for (let i = 10; i < snake.length; i++) {
+        // Self-collision check (important!)
         const segment = snake[i];
         const distance = Math.sqrt(
             Math.pow(x - (segment.x + 5), 2) +
             Math.pow(y - (segment.y + 5), 2)
         );
-        if (distance < 10) {
-            // 반경 5 + 여유 5
+        if (distance < 7) {
+            // Radius 5 + margin 2
             return true;
         }
     }
@@ -198,3 +229,117 @@ function gameOver(x, y) {
     return false;
 }
 
+let foods = [];
+let score = 0;
+
+const colors = [
+    'red',
+    'blue',
+    'white',
+    'lightgray',
+    'green'
+];
+
+function spawnFood() {
+    if (foods.length >= 5) return;
+
+    const food = {
+        x: Math.floor(Math.random() * (canvas.width - 10)) + 5,
+        y: Math.floor(Math.random() * (canvas.height - 10)) + 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        points: Math.floor(Math.random() * 3) + 1,
+        active: true
+    };
+
+    foods.push(food);
+}
+
+function drawFoods() {
+    foods.forEach(food => {
+        if (food.active === false) return;
+        ctx.fillStyle = food.color;
+        ctx.beginPath();
+        ctx.arc(food.x, food.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+function checkFoodCollision() {
+    const head = snake[0];
+    const headCenterX = head.x + 5;
+    const headCenterY = head.y + 5;
+    const COLLISION_DISTANCE = 10;
+
+    for (let i = 0; i < foods.length; i++) {
+        const food = foods[i];
+
+        if (!food.active) continue;
+
+        const distance = Math.sqrt(
+            Math.pow(headCenterX - food.x, 2) +
+            Math.pow(headCenterY - food.y, 2)
+        );
+
+        if (distance < COLLISION_DISTANCE) {
+            eatFood(i);
+        }
+    }
+}
+
+function eatFood(foodIndex) {
+    const food = foods[foodIndex];
+
+    food.active = false;
+
+    score += food.points;
+    updateScoreDisplay();
+
+    growSnake();
+
+    foods.splice(foodIndex, 1);
+
+    setTimeout(() => {
+        if (foods.length < 5) {
+            spawnFood();
+        }
+    }, 500);
+}
+
+function updateScoreDisplay() {
+    const scoreElement = document.getElementById('score');
+    const highScoreElement = document.getElementById('highScore');
+
+    scoreElement.textContent = score;
+
+    let highScore = parseInt(localStorage.getItem('snakeHighScore') || '0');
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('snakeHighScore', highScore.toString());
+    }
+
+    highScoreElement.textContent = highScore;
+}
+
+function growSnake() {
+    const tail = snake[snake.length - 1];
+    const secondLast = snake[snake.length - 2];
+
+    let newSegment;
+
+    if (secondLast) {
+        const dx = tail.x - secondLast.x;
+        const dy = tail.y - secondLast.y;
+
+        newSegment = {
+            x: tail.x + dx,
+            y: tail.y + dy
+        };
+    } else {
+        newSegment = {
+            x: tail.x - 10,
+            y: tail.y
+        };
+    }
+
+    snake.push(newSegment);
+}
